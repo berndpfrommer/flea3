@@ -341,6 +341,16 @@ void Flea3Camera::SetShutter(bool& auto_shutter, double& shutter_ms) {
   shutter_ms = prop.absValue;
 }
 
+float Flea3Camera::GetAbsToRelativeRatio(int absRegister, int relRegister,
+                                         unsigned int mask) {
+  unsigned int relVal;
+  AbsValueConversion av;
+  camera_.ReadRegister(absRegister, &av.uint_val);
+  camera_.ReadRegister(relRegister, &relVal);
+  unsigned int relMasked = relVal & mask; // last bits hold value
+  return (av.float_val / (float)relMasked);
+}
+
 void Flea3Camera::SetGain(bool& auto_gain, double& gain_db) {
   const auto prop_type = GAIN;
   SetProperty(camera_, prop_type, true, auto_gain, gain_db);

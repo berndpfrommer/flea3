@@ -34,6 +34,9 @@ class Flea3Camera {
   void SetShutter(bool& auto_shutter, double& shutter_ms);
   void SetGain(bool& auto_gain, double& gain_db);
   void SetEnableTimeStamps(bool tsOnOff);
+  float GetAbsToRelativeRatio(int absRegister, int relRegister,
+                              unsigned int mask = 0x00000FFF);
+
  private:
   std::string AvailableDevice();
 
