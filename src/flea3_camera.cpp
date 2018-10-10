@@ -65,7 +65,7 @@ void Flea3Camera::SetConfiguration() {
   FC2Config config;
   PgrError(camera_.GetConfiguration(&config), "Failed to get configuration");
   // Set the grab timeout to 1 seconds
-  config.grabTimeout = 1000;
+  config.grabTimeout = 20000;
   // Try 2 times before declaring failure
   config.registerTimeoutRetries = 2;
   // NOTE: Cannot do this here, will block all the following settings on format7
