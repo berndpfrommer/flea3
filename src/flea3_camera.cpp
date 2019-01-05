@@ -347,7 +347,7 @@ float Flea3Camera::GetAbsToRelativeRatio(int absRegister, int relRegister,
   camera_.ReadRegister(absRegister, &av.uint_val);
   camera_.ReadRegister(relRegister, &relVal);
   unsigned int relMasked = relVal & mask; // last bits hold value
-  return (av.float_val / (float)relMasked);
+  return (relMasked == 0 ? -1.0 : av.float_val / (float)relMasked);
 }
 
 void Flea3Camera::SetGain(bool& auto_gain, double& gain_db) {
