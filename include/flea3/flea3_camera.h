@@ -30,6 +30,8 @@ class Flea3Camera {
                     const void *pcallbackData = NULL);
   void StopCapture();
   bool RequestSingle();
+  bool FireSoftwareTrigger();
+
   double GetShutterTimeSec();
   void SetShutter(bool& auto_shutter, double& shutter_ms);
   void SetGain(bool& auto_gain, double& gain_db);
@@ -71,7 +73,6 @@ class Flea3Camera {
   void SetTrigger(int& trigger_source, int& trigger_polarity,
                   int &trigger_mode);
   bool PollForTriggerReady();
-  bool FireSoftwareTrigger();
 
   // Strobe
   void SetStrobe(int& strobe_control, int& polarity);
